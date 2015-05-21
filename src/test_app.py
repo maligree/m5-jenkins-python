@@ -26,5 +26,10 @@ class AppTestCase(unittest.TestCase):
         self.assertIn('id', json_data['item'])
         self.assertEquals(json_data['item']['id'], 100)
 
+    def test_item_error_response(self):
+        re = self.app.get('/item/one')
+        self.assertEquals(re.status_code, 404)
+
+
 if __name__ == "__main__":
     unittest.main()
